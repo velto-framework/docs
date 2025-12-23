@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Velto Docs – Runtime Contract</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Velto Docs</h1>
+    <ul>
+        <li><a href="syntax.html">Syntax</a></li>
+        <li><a href="tags.html">Tags</a></li>
+        <li><a href="attributes.html">Attributes</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="parsing.html">Parsing Rules</a></li>
+        <li><a href="runtime-contract.html">Runtime Contract</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+</div>
+
+<div class="main">
+    <h2>Runtime Contract</h2>
+    <p>
+        The runtime contract defines the minimum behaviour that any conforming Velto runtime MUST implement. Different
+        runtimes may target different platforms (for example browsers, native, or server‑side rendering), but they must
+        all respect the same language rules.
+    </p>
+
+    <h3>Loading</h3>
+    <ul>
+        <li>Runtimes MUST be able to load Velto documents from a text source.</li>
+        <li>Runtimes MUST support the <code>.velto</code> extension.</li>
+        <li>Runtimes MAY support additional sources (for example strings, streams, or in‑memory documents).</li>
+    </ul>
+
+    <h3>Parsing</h3>
+    <ul>
+        <li>Runtimes MUST parse Velto input as XML or XML‑compatible syntax.</li>
+        <li>Runtimes MUST reject malformed documents and report an error.</li>
+        <li>Runtimes MUST locate and use the <code>&lt;velto&gt;</code> root element.</li>
+    </ul>
+
+    <h3>Tag handling</h3>
+    <ul>
+        <li>Runtimes MUST implement the standard tag mappings defined in the Tags section.</li>
+        <li>Runtimes MAY support additional, custom tags.</li>
+        <li>Runtimes MUST provide a sensible fallback for unknown tags (for example mapping to <code>&lt;div&gt;</code>).</li>
+    </ul>
+
+    <h3>Attribute handling</h3>
+    <ul>
+        <li>Runtimes MUST support behaviour attributes defined in the Attributes section.</li>
+        <li>Runtimes MUST pass unknown attributes through to the platform layer unchanged.</li>
+        <li>Runtimes MAY emit warnings for unknown or suspicious attributes in development mode.</li>
+    </ul>
+
+    <h3>Event handling</h3>
+    <ul>
+        <li>Runtimes MUST attach event handlers corresponding to behaviour attributes.</li>
+        <li>Runtimes MUST ensure that events fire in response to user interactions as specified.</li>
+        <li>Runtimes MAY provide configuration to enable or disable specific behaviours.</li>
+    </ul>
+
+    <h3>Error reporting</h3>
+    <ul>
+        <li>Runtimes MUST log fatal errors when rendering cannot proceed.</li>
+        <li>Runtimes SHOULD log non‑fatal warnings for unknown tags and attributes.</li>
+        <li>Runtimes MAY expose debug hooks for developer tools.</li>
+    </ul>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
