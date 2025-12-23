@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Velto Docs – Roadmap</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Velto Docs</h1>
+    <ul>
+        <li><a href="syntax.html">Syntax</a></li>
+        <li><a href="tags.html">Tags</a></li>
+        <li><a href="attributes.html">Attributes</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="parsing.html">Parsing Rules</a></li>
+        <li><a href="runtime-contract.html">Runtime Contract</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+</div>
+
+<div class="main">
+    <h2>Velto Roadmap</h2>
+    <p>
+        Velto is intentionally minimal in its initial versions. This roadmap outlines planned areas of evolution for
+        the language, runtime, and tooling ecosystem.
+    </p>
+
+    <h3>Short‑term goals (v0.x)</h3>
+    <ul>
+        <li>Stabilise the core tag set.</li>
+        <li>Extend the behaviour attribute library.</li>
+        <li>Add configuration options for strict/relaxed parsing.</li>
+        <li>Improve diagnostics and error messages.</li>
+    </ul>
+
+    <h3>Mid‑term goals (v1.x)</h3>
+    <ul>
+        <li>Introduce a component model for reusable UI blocks.</li>
+        <li>Define a standard for scoped styles in Velto documents.</li>
+        <li>Support custom events and event bubbling.</li>
+        <li>Provide a CLI for building and bundling Velto applications.</li>
+    </ul>
+
+    <h3>Long‑term goals</h3>
+    <ul>
+        <li>Multiple runtime targets (for example server‑side, native, or hybrid).</li>
+        <li>Editor tooling and language server integration.</li>
+        <li>Formal specification with versioning and stability guarantees.</li>
+        <li>Pluggable extensions for third‑party tags and behaviours.</li>
+    </ul>
+
+    <h3>Versioning</h3>
+    <p>
+        Velto will use semantic versioning once it reaches v1.0.0. Until then, breaking changes may occur between minor
+        versions as the language stabilises. Runtimes SHOULD document which Velto spec version they target.
+    </p>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
