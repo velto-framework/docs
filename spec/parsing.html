@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Velto Docs – Parsing Rules</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Velto Docs</h1>
+    <ul>
+        <li><a href="syntax.html">Syntax</a></li>
+        <li><a href="tags.html">Tags</a></li>
+        <li><a href="attributes.html">Attributes</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="parsing.html">Parsing Rules</a></li>
+        <li><a href="runtime-contract.html">Runtime Contract</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+</div>
+
+<div class="main">
+    <h2>Parsing Rules</h2>
+    <p>
+        This section defines how Velto documents are parsed and converted into a runtime representation. The reference
+        implementation uses the browser's <code>DOMParser</code> with the <code>text/xml</code> MIME type, but the
+        parsing model is implementation‑agnostic.
+    </p>
+
+    <h3>Parsing steps</h3>
+    <ol>
+        <li>Load the Velto source as text.</li>
+        <li>Parse the text as XML into an in‑memory tree.</li>
+        <li>Locate the <code>&lt;velto&gt;</code> root element.</li>
+        <li>Recursively convert Velto nodes into platform DOM nodes.</li>
+        <li>Attach behaviours based on attributes.</li>
+        <li>Mount the resulting DOM subtree at the requested mount point.</li>
+    </ol>
+
+    <h3>XML errors</h3>
+    <p>
+        If the XML parser reports an error (for example via a <code>&lt;parsererror&gt;</code> element), the runtime:
+    </p>
+    <ul>
+        <li>MUST NOT attempt to render partial output.</li>
+        <li>MUST log an error to the console.</li>
+        <li>MAY expose error details to developer tools.</li>
+    </ul>
+
+    <h3>Root element resolution</h3>
+    <p>
+        After parsing, the runtime searches for the first <code>&lt;velto&gt;</code> element. If none is found, the
+        runtime MUST abort rendering and log an error.
+    </p>
+
+    <h3>Node conversion</h3>
+    <p>
+        For each node in the Velto tree:
+    </p>
+    <ul>
+        <li>Text nodes MUST be converted to platform text nodes.</li>
+        <li>Comment nodes MAY be preserved or discarded, according to configuration.</li>
+        <li>Element nodes MUST be converted using the tag mapping rules.</li>
+    </ul>
+
+    <h3>Mounting</h3>
+    <p>
+        Once conversion is complete, the runtime MUST:
+    </p>
+    <ul>
+        <li>Locate the mount element using a selector provided by the host application.</li>
+        <li>Clear any existing content in the mount element.</li>
+        <li>Append the converted Velto DOM subtree.</li>
+    </ul>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
